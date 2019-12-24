@@ -18,7 +18,7 @@ class Channel extends React.Component {
   render(){
     return (
       <div className="sender content-box">
-        <input type="text" placeholder="Channel:" className="message-input" onChange={this.channelHandler} onKeyPress={this.keyPressed}/>
+        <input type="text" maxlength="10" placeholder="Channel:" className="message-input" onChange={this.channelHandler} onKeyPress={this.keyPressed}/>
         <button onClick={() => {this.props.getIn(this.state.room)}}>Send</button>
       </div>
     );
