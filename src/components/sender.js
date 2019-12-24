@@ -29,7 +29,7 @@ class Sender extends React.Component {
   render(){
     return (
       <div className="sender content-box">
-        <input type="text" placeholder="Author:" className="message-input" onChange={this.authorHandler} onKeyPress={this.keyPressed}/>
+        <input type="text" placeholder="Author:" maxlength="15" className="message-input" onChange={this.authorHandler} onKeyPress={this.keyPressed}/>
         <textarea placeholder="Text:" className="message-input" onChange={this.textHandler} onKeyPress={this.keyPressed}></textarea>
         <button onClick={this.sendMsg}>Send</button>
       </div>
