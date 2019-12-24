@@ -1,36 +1,17 @@
 import React from 'react';
-import socket from '../services/io';
 
-class Receiver extends React.Component {
-  
-  state = {messages: []};
-  
-  updateMsgs = (data) => {
-    this.setState((state) => {
-      console.log(state.messages);
-      return({messages: [...state.messages, data]});
-    });
-  };
-  
-  componentDidMount = () => {
-    var update = this.updateMsgs;
-    socket.on('message', function(data){
-      update(data);
-    })
-    
-  };
-
-  render(){
+function Receiver(props){
     return (
       <div className="receiver content-box">
-        <h1>{this.state.messages.map((msg) => (
+        <center><h1 className="mssg" id="name">Room: {props.name} - {props.clients} online</h1></center>
+        <center><p className="mssg">Server: This chat have been cleared</p></center>
+        {props.mssgs.map((mssg) => (
           <p className="mssg">
-            {msg.author}: {msg.text}<br />
+            {mssg.author}: {mssg.text}<br />
           </p>
-        ))}</h1>
+        ))}
       </div>
     );
-  }
 }
 
 export default Receiver;
