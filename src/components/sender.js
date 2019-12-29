@@ -17,21 +17,23 @@ class Sender extends React.Component {
   
   keyPressed = (e) => {
     if(e.key === "Enter"){
-      this.sendMsg();
+      e.preventDefault();
+      this.sendMsg(e.target);
     }
   };
   
-  sendMsg = () => {
+  sendMsg = (target) => {
     const {author, text} = this.state;
     socket.emit('send', {author, text});
+    target.value = '';
   };
 
   render(){
     return (
       <div className="sender content-box">
-        <input type="text" placeholder="Author:" maxlength="15" className="message-input" onChange={this.authorHandler} onKeyPress={this.keyPressed}/>
-        <textarea placeholder="Text:" className="message-input" onChange={this.textHandler} onKeyPress={this.keyPressed}></textarea>
-        <button onClick={this.sendMsg}>Send</button>
+        <input type="text" placeholder="Author:" maxLength="15" className="message-input" onChange={this.authorHandler}/>
+        <textarea placeholder="Text:" id='text-input' className="message-input" onChange={this.textHandler} onKeyPress={this.keyPressed}></textarea>
+        <button onClick={this.sendMsg.bind(this, document.getElementById('text-input'))}>Send</button>
       </div>
     );
   }
