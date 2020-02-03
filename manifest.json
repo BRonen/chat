@@ -1,6 +1,6 @@
 {
-  "short_name": "Bug chat",
-  "name": "Bug chat",
+  "short_name": "myChat",
+  "name": "myChat",
   "icons": [
     {
       "src": "favicon.ico",
